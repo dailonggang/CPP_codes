@@ -1,0 +1,12 @@
+std::string videoFileName("/home/root/video/3_smoke.mkv");
+char firstDigit = '\0';
+for(char c : videoFileName)
+{
+    if(std::isdigit(c))
+    {
+        firstDigit = c;
+        break;
+    }
+}
+
+int firstDigitValue = firstDigit - '0';
