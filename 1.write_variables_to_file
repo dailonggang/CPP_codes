@@ -1,0 +1,39 @@
+void SaveDoubleValuesToFile() {
+    // 打开一个文本文件以写入模式，如果文件不存在会创建新文件
+    std::ofstream outfile("double_values.txt", std::ios::app); // 使用追加模式
+
+    // 检查文件是否成功打开
+    if (!outfile.is_open()) {
+        std::cerr << "Failed to open file for writing." << std::endl;
+        return;
+    }
+
+    // 定义变量名称和对应的值
+    std::vector<std::pair<std::string, double>> variables = {
+        {"smoke_acc", smoke_acc},
+        {"call_acc", call_acc},
+        {"drink_acc", drink_acc},
+        {"light_acc", light_acc},
+        {"medium_acc", medium_acc},
+        {"heavy_acc", heavy_acc},
+        {"LIGHT_acc", LIGHT_acc},
+        {"MEDIUM_acc", MEDIUM_acc},
+        {"HEAVY_acc", HEAVY_acc}
+    };
+    // 设置输出格式，保留小数点后三位
+    outfile << std::fixed << std::setprecision(3);
+    // 添加纵向分隔线
+    outfile << "----------------------------------------" << std::endl;
+
+    // 写入每个变量的名称和值
+    for (const auto& variable : variables) {
+        outfile << "| " << variable.first << " = " << variable.second << "\t|"
+                << std::endl;
+    }
+
+    // 添加横向分隔线
+    outfile << "----------------------------------------" << std::endl;
+
+    // 关闭文件
+    outfile.close();
+}
